@@ -32,30 +32,34 @@ public class Calculator {
         System.out.println("Вы ввели: " + b);
         System.out.println("Результат = " + result(a, b, act));
 
-        static String result(int a, int b, String act){
-            switch(act) {
-                case "+":
-                    return String.valueof(a + b);
-                case "-":
-                    return String.valueOf(a - b);
-                case "*":
-                    if (a == 0||b = 0){
-                        return String.valueOf(0);
-                    }else{
-                        return String.valueOf(a * b);
-                    }
-                case "/":
-                    if (b == 0) {
-                        return byZero(a);
-                    }else{
-                        return String.valueOf(a / b);
-                    }
-                default:
-                    return String.valueOf(0);
-            }
-        }
-        static String byZero(int a) {return String.valueof("Ошибка");}
+
+
     }
 
+    static String result(int a, int b, String act){
+        switch(act) {
+            case "+":
+                return String.valueOf(a + b);
+            case "-":
+                return String.valueOf(a - b);
+            case "*":
+                if (a == 0 || b == 0) {
+                    return String.valueOf(0);
+                } else {
+                    return String.valueOf(a * b);
+                }
+            case "/":
+                if (b == 0) {
+                    return byZero(a);
+                }else{
+                    return String.valueOf(a / b);
+                }
+            default:
+                return String.valueOf(0);
+        }
+    }
 
+    static String byZero(int a) { //TODO что тут значит int a и где оно тут используется?
+        return "Ошибка";
+    }
 }
