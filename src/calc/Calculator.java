@@ -16,23 +16,22 @@ getCalcResult() - должен отдавать на выход строку в 
 public class Calculator {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         getCalcResult();
     }
 
     private static void getCalcResult() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Первое целое число: ");
-        int a = scanner.nextInt();
-        System.out.println("Вы ввели: " + a);
+        String a = scanner.nextLine();
+        if (a.equals("exit")) {
+            exitCalc();
+        }
         System.out.println("Введите операцию: ");
         String act = scanner.next();
         System.out.println("Второе целое число: ");
         int b = scanner.nextInt();
         System.out.println("Вы ввели: " + b);
-        System.out.println("Результат = " + result(a, b, act));
-
-
+        System.out.println("Результат = " + result(Integer.parseInt(a), b, act));
 
     }
 
@@ -50,7 +49,7 @@ public class Calculator {
                 }
             case "/":
                 if (b == 0) {
-                    return byZero(a);
+                    return byZero();
                 }else{
                     return String.valueOf(a / b);
                 }
@@ -59,7 +58,11 @@ public class Calculator {
         }
     }
 
-    static String byZero(int a) { //TODO что тут значит int a и где оно тут используется?
+    static String byZero() {
         return "Ошибка";
+    }
+
+    static void exitCalc() {
+        System.exit(0);
     }
 }
