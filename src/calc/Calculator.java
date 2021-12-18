@@ -26,13 +26,11 @@ public class Calculator {
         if (a.equals("exit")) {
             exitCalc();
         }
-        System.out.println("Введите операцию: ");
+        System.out.println("Вы ввели: " + a + "\nВведите операцию: ");
         String act = scanner.next();
-        System.out.println("Второе целое число: ");
+        System.out.println("Вы ввели: " + act + "\nВторое целое число: ");
         int b = scanner.nextInt();
-        System.out.println("Вы ввели: " + b);
-        System.out.println("Результат = " + result(Integer.parseInt(a), b, act));
-
+        System.out.println("Вы ввели: " + b + "\nРезультат = " + result(Integer.parseInt(a), b, act));
     }
 
     static String result(int a, int b, String act){
@@ -48,18 +46,16 @@ public class Calculator {
                     return String.valueOf(a * b);
                 }
             case "/":
-                if (b == 0) {
-                    return byZero();
-                }else{
+                try {
                     return String.valueOf(a / b);
                 }
+                catch (ArithmeticException e) {
+                    System.out.println("На ноль делить нельзя!");
+                }
+                    return String.valueOf(a / b);
             default:
                 return String.valueOf(0);
         }
-    }
-
-    static String byZero() {
-        return "Ошибка";
     }
 
     static void exitCalc() {
